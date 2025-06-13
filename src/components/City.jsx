@@ -1,6 +1,9 @@
+import { useParams } from "react-router-dom";
+// eslint-disable-next-line no-unused-vars
 import styles from "./City.module.css";
 
 
+// eslint-disable-next-line no-unused-vars
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
     day: "numeric",
@@ -20,50 +23,59 @@ export default function City() {
   };
 
 
+  const { id } = useParams();
+  console.log(id);
+
+
+  // eslint-disable-next-line no-unused-vars
   const { cityName, emoji, date, notes } = currentCity;
 
-
   return (
-
-    <div className={styles.city}>
-
-      <div className={styles.row}>
-        <h6>City name</h6>
-        <h3>
-          <span>{emoji}</span> {cityName}
-        </h3>
-      </div>
-
-      <div className={styles.row}>
-        <h6>You went to {cityName} on</h6>
-        <p>{formatDate(date || null)}</p>
-      </div>
-
-      {notes && (
-        <div className={styles.row}>
-          <h6>Your notes</h6>
-          <p>{notes}</p>
-        </div>
-      )}
-
-      <div className={styles.row}>
-
-        <h6>Learn more</h6>
-        <a
-          href={`https://en.wikipedia.org/wiki/${cityName}`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Check out {cityName} on Wikipedia &rarr;
-        </a>
-      </div>
-
-      <div>
-        <ButtonBack />
-      </div>
-
-    </div>
-
+    <h1>CİTY {id}</h1>
   )
+
+
+  // return (
+
+  //   <div className={styles.city}>
+
+  //     <div className={styles.row}>
+  //       <h6>City name</h6>
+  //       <h3>
+  //         <span>{emoji}</span> {cityName}
+  //       </h3>
+  //     </div>
+
+  //     <div className={styles.row}>
+  //       <h6>You went to {cityName} on</h6>
+  //       <p>{formatDate(date || null)}</p>
+  //     </div>
+
+  //     {notes && (
+  //       <div className={styles.row}>
+  //         <h6>Your notes</h6>
+  //         <p>{notes}</p>
+  //       </div>
+  //     )}
+
+  //     <div className={styles.row}>
+
+  //       <h6>Learn more</h6>
+  //       <a
+  //         href={`https://en.wikipedia.org/wiki/${cityName}`}
+  //         target="_blank"
+  //         rel="noreferrer"
+  //       >
+  //         Check out {cityName} on Wikipedia &rarr;
+  //       </a>
+  //     </div>
+
+  //     <div>
+  //       <ButtonBack />
+  //     </div>
+
+  //   </div>
+
+  // )
 
 }

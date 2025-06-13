@@ -11,6 +11,7 @@ import PageNotFound from "./pages/PageNotFound";
 import CityList from "./components/CityList";
 import { BASE_URL, URL_ROUTE } from "./components/_config";
 import CountryList from "./components/CountryList";
+import City from "./components/City";
 
 
 export default function App() {
@@ -60,6 +61,7 @@ export default function App() {
 
           <Route index element={<CityList cities={cities} isLoading={isLoading} />} />
           <Route path="cities" element={<CityList cities={cities} isLoading={isLoading} />} />
+          <Route path='cities/:id' element={<City />} />
           <Route path="countries" element={<CountryList cities={cities} isLoading={isLoading} />} />
           <Route path="form" element={<p>Form</p>} />
 
