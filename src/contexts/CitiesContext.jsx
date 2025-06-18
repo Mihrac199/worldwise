@@ -9,6 +9,7 @@ export function CitiesProvider({ children }) {
 
      const [cities, setCities] = useState([]);
      const [isLoading, setİsLoading] = useState(false);
+     const [currentCity, setCurrentCity] = useState({});
 
      useEffect(function () {
 
@@ -37,11 +38,38 @@ export function CitiesProvider({ children }) {
 
      }, [])
 
+
+     async function getCity(id) {
+
+          try {
+
+               setİsLoading(true);
+               const res = await fetch(`${BASE_URL}/${URL_ROUTE}/${id}`);
+               const data = await res.json();
+               setCurrentCity(data);
+
+          } catch {
+
+               alert("There was a API error.");
+
+          } finally {
+
+               setİsLoading(false);
+
+          }
+
+
+
+     }
+
+
      return (
 
           <CitiesContext.Provider value={{
                cities,
-               isLoading
+               isLoading,
+               getCity,
+               currentCity
           }}>{children}</CitiesContext.Provider>
 
      )

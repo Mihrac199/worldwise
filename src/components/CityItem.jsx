@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './CityItem.module.css';
+import { useCities } from '../contexts/CitiesContext';
 
 
 const formatDate = (date) =>
@@ -15,12 +16,14 @@ export default function CityItem({ city }) {
 
      // eslint-disable-next-line react/prop-types
      const { cityName, emoji, date, id, position } = city;
+     const { currentCity } = useCities();
 
      return (
 
           <li>
                {/* eslint-disable-next-line react/prop-types */}
-               <Link className={styles.cityItem} to={`${id}?lat=${position.lat}&lng=${position.lng}`}>
+               <Link className={`${styles.cityItem} ${currentCity.id === id ? styles["cityItem--active"] : ""} `}
+                    to={`${id}?lat=${position.lat}&lng=${position.lng}`}>
 
                     <span className={styles.emoji}>{emoji}</span>
                     <h3 className={styles.name}>{cityName}</h3>
@@ -28,7 +31,7 @@ export default function CityItem({ city }) {
                     <button className={styles.deleteBtn}>&times;</button>
 
                </Link>
-          </li>
+          </li >
 
      )
 
