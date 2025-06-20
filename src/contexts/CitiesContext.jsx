@@ -1,5 +1,5 @@
-import { createContext, useContext, useState, useEffect } from "react";
-import { BASE_URL, URL_ROUTE } from "../components/_config";
+import { createContext, useContext, useState, useEffect } from "react"
+import { BASE_URL, URL_ROUTE } from "../components/_config"
 
 
 const CitiesContext = createContext();

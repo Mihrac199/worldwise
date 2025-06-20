@@ -1,10 +1,10 @@
-import { useParams } from "react-router-dom";
-import { useCities } from "../contexts/CitiesContext";
-import { useEffect } from "react";
+import { useParams } from "react-router-dom"
+import { useCities } from "../contexts/CitiesContext"
+import { useEffect } from "react"
 // eslint-disable-next-line no-unused-vars
-import styles from "./City.module.css";
-import Spinner from "./Spinner";
-import BackButton from "./BackButton";
+import styles from "./City.module.css"
+import Spinner from "./Spinner"
+import BackButton from "./BackButton"
 
 
 // eslint-disable-next-line no-unused-vars

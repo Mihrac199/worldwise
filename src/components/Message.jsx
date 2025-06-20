@@ -1,4 +1,4 @@
-import styles from "./Message.module.css";
+import styles from "./Message.module.css"
 
 
 // eslint-disable-next-line react/prop-types

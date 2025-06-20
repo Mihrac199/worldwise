@@ -1,16 +1,16 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { CitiesProvider } from "./contexts/CitiesContext";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+import { CitiesProvider } from "./contexts/CitiesContext"
 
-import Homepage from "./pages/Homepage";
-import Product from "./pages/Product";
-import Pricing from "./pages/Pricing";
-import Login from "./pages/Login";
-import AppLayout from "./pages/AppLayout";
-import PageNotFound from "./pages/PageNotFound";
-import CityList from "./components/CityList";
-import CountryList from "./components/CountryList";
-import City from "./components/City";
-import Form from "./components/Form";
+import Homepage from "./pages/Homepage"
+import Product from "./pages/Product"
+import Pricing from "./pages/Pricing"
+import Login from "./pages/Login"
+import AppLayout from "./pages/AppLayout"
+import PageNotFound from "./pages/PageNotFound"
+import CityList from "./components/CityList"
+import CountryList from "./components/CountryList"
+import City from "./components/City"
+import Form from "./components/Form"
 
 
 export default function App() {
