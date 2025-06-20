@@ -2,6 +2,8 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { useUrlPosition } from "../hooks/useUrlPosition"
 import { BASE_URL_2 } from "./_config"
+import Message from "./Message"
+import Spinner from "./Spinner"
 import styles from "./Form.module.css"
 import Button from "./Button"
 import BackButton from "./BackButton"
@@ -26,8 +28,10 @@ export default function Form() {
   // eslint-disable-next-line no-unused-vars
   const [country, setCountry] = useState("");
   const [date, setDate] = useState(new Date());
+  const [emoji, setEmoji] = useState("");
   const [notes, setNotes] = useState("");
   const [isLoadingGeoCoding, setİsLoadingGeoCoding] = useState(false);
+  const [geoCodingError, setGeoCodingError] = useState("");
 
   useEffect(function () {
 
@@ -38,14 +42,19 @@ export default function Form() {
 
         const res = await fetch(`${BASE_URL_2}?latitude=${lat}&longitude=${lng}`);
         const data = await res.json();
-
         console.log(data);
+
+        if (!data.countryCode) {
+          throw new Error("That Doesn't Seem To Be a City. Click Somewhere Else...");
+        }
+
         setCityName(data.city || data.locality || "");
         setCountry(data.countryName);
+        setEmoji(convertToEmoji(data.countryCode));
 
       } catch (err) {
 
-        console.log(err);
+        setGeoCodingError(err.message);
 
       } finally {
 
@@ -60,6 +69,12 @@ export default function Form() {
   }, [lat, lng])
 
 
+  if (isLoadingGeoCoding) return <Spinner />
+
+
+  if (geoCodingError) return <Message message={geoCodingError} />
+
+
   return (
 
     <form className={styles.form}>
@@ -71,7 +86,7 @@ export default function Form() {
           onChange={(e) => setCityName(e.target.value)}
           value={cityName}
         />
-        {/* <span className={styles.flag}>{emoji}</span> */}
+        <span className={styles.flag}>{emoji}</span>
       </div>
 
       <div className={styles.row}>
