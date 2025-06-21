@@ -4,7 +4,7 @@ import { BASE_URL, URL_ROUTE } from "../components/_config"
 
 const CitiesContext = createContext();
 
-// eslint-disable-next-line react/prop-types
+
 export function CitiesProvider({ children }) {
 
      const [cities, setCities] = useState([]);
@@ -63,13 +63,70 @@ export function CitiesProvider({ children }) {
      }
 
 
+     async function createCity(newCity) {
+
+          try {
+
+               setİsLoading(true);
+               const res = await fetch(`${BASE_URL}/${URL_ROUTE}`, {
+                    method: "POST",
+                    body: JSON.stringify(newCity),
+                    headers: {
+                         "Content-Type": "application/json"
+                    }
+               });
+               const data = await res.json();
+               setCities(cities => [...cities, data]);
+
+          } catch {
+
+               alert("There was a creating error.");
+
+          } finally {
+
+               setİsLoading(false);
+
+          }
+
+
+
+     }
+
+
+     async function deleteCity(id) {
+
+          try {
+
+               setİsLoading(true);
+               await fetch(`${BASE_URL}/${URL_ROUTE}/${id}`, {
+                    method: "DELETE"
+               });
+               setCities(cities => cities.filter(city => city.id !== id));
+
+          } catch {
+
+               alert("There was a deleting error.");
+
+          } finally {
+
+               setİsLoading(false);
+
+          }
+
+
+
+     }
+
+
      return (
 
           <CitiesContext.Provider value={{
                cities,
                isLoading,
                getCity,
-               currentCity
+               currentCity,
+               createCity,
+               deleteCity
           }}>{children}</CitiesContext.Provider>
 
      )

@@ -11,7 +11,6 @@ import styles from './Map.module.css'
 
 export default function Map() {
 
-     // eslint-disable-next-line no-unused-vars
      const [mapPosition, setMapPosition] = useState([40, 0]);
      const { cities } = useCities();
      const {
