@@ -1,3 +1,4 @@
+import PageNav from "../components/PageNav"
 import styles from "./Product.module.css"
 
 export default function Product() {
@@ -5,6 +6,8 @@ export default function Product() {
   return (
 
     <main className={styles.product}>
+
+      <PageNav />
 
       <section>
 

@@ -1,4 +1,6 @@
+import { useState } from "react"
 import styles from "./Login.module.css"
+import PageNav from "../components/PageNav"
 
 export default function Login() {
 
@@ -8,6 +10,8 @@ export default function Login() {
   return (
 
     <main className={styles.login}>
+
+      <PageNav />
 
       <form className={styles.form}>
 
