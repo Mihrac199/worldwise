@@ -1,12 +1,5 @@
+import { formatDateV2 } from "../_config"
 import styles from "./City.module.css"
-
-const formatDate = (date) =>
-  new Intl.DateTimeFormat("en", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    weekday: "long",
-  }).format(new Date(date));
 
 export default function City() {
   // TEMP DATA
@@ -32,7 +25,7 @@ export default function City() {
 
       <div className={styles.row}>
         <h6>You went to {cityName} on</h6>
-        <p>{formatDate(date || null)}</p>
+        <p>{formatDateV2(date || null)}</p>
       </div>
 
       {notes && (
