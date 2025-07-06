@@ -2,7 +2,7 @@ import styles from "./CountryItem.module.css"
 
 export default function CountryItem({ country }) {
 
-  const [emoji, countryName] = country;
+  const [emoji, countryName] = country.split(" ");
 
   return (
 
