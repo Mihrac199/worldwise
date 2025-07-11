@@ -1,16 +1,8 @@
 // "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=0&longitude=0"
 import { useState } from "react"
+import Button from "./Button"
+import BackButton from "./BackButton"
 import styles from "./Form.module.css"
-
-export function convertToEmoji(countryCode) {
-
-  const codePoints = countryCode
-    .toUpperCase()
-    .split("")
-    .map((char) => 127397 + char.charCodeAt());
-  return String.fromCodePoint(...codePoints);
-
-}
 
 export default function Form() {
 
@@ -53,8 +45,10 @@ export default function Form() {
       </div>
 
       <div className={styles.buttons}>
-        <button>Add</button>
-        <button>&larr; Back</button>
+
+        <Button type="primary">Add</Button>
+        <BackButton />
+
       </div>
 
     </form>
