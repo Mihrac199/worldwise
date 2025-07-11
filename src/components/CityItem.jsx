@@ -11,8 +11,9 @@ export default function CityItem({ city }) {
      return (
 
           <li >
-               <Link to={`${id}?lat=${position.lat}&lng=${position.lng}`}
-                    className={`${styles.cityItem} ${id === currentCity.id ? styles["cityItem--active"] : ""}`}>
+               <Link
+                    className={`${styles.cityItem} ${id === currentCity.id ? styles["cityItem--active"] : ""}`}
+                    to={`${id}?lat=${position.lat}&lng=${position.lng}`}>
 
                     <span className={styles.emoji}>{emoji}</span>
                     <h3 className={styles.name}>{cityName}</h3>
