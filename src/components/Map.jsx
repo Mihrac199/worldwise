@@ -20,7 +20,7 @@ export default function Map() {
 
      const [mapLat, mapLng] = useUrlPosition();
 
-     const [mapPosition, setMapPosition] = useState([40, 0]);
+     const [mapPosition, setMapPosition] = useState([39.1667, 35.6667]);
 
      useEffect(function () {
           if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import { useCities } from "../contexts/CitiesContext"
 import { useUrlPosition } from "../hooks/useUrlPosition"
 import { BASE_URL_GEOCODİNG, convertToEmoji } from "../_config"
@@ -15,7 +16,9 @@ export default function Form() {
 
   const [lat, lng] = useUrlPosition();
 
-  const { createCity } = useCities();
+  const { createCity, isLoading } = useCities();
+
+  const navigate = useNavigate();
 
   const [cityName, setCityName] = useState("");
   const [country, setCountry] = useState("");
@@ -66,7 +69,7 @@ export default function Form() {
 
   if (geocodingError) return <Message message={geocodingError} />
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     if (!cityName || !date || !notes) return;
@@ -80,13 +83,15 @@ export default function Form() {
       position: { lat, lng }
     };
 
-    createCity(newCity);
+    await createCity(newCity);
+
+    navigate("/app");
 
   }
 
   return (
 
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form className={`${styles.form} ${isLoading ? styles["loading"] : ""}`} onSubmit={handleSubmit}>
 
       <div className={styles.row}>
         <label htmlFor="cityName">City name</label>
