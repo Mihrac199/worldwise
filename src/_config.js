@@ -1,5 +1,7 @@
 export const BASE_URL = "http://localhost:9000";
 
+export const BASE_URL_GEOCODİNG = "https://api.bigdatacloud.net/data/reverse-geocode-client";
+
 export const ROUTE_CİTİES = "cities";
 
 export function convertToEmoji(countryCode) {
