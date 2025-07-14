@@ -1,11 +1,21 @@
 import { useState } from "react"
-import styles from "./Login.module.css"
+import { useAuth } from "../contexts/FakeAuthContext"
 import PageNav from "../components/PageNav"
+import Button from "../components/Button"
+import styles from "./Login.module.css"
 
 export default function Login() {
 
+  const { login } = useAuth();
+
   const [email, setEmail] = useState("jack@example.com");
   const [password, setPassword] = useState("qwerty");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (email && password) login(email, password);
+  }
 
   return (
 
@@ -13,7 +23,7 @@ export default function Login() {
 
       <PageNav />
 
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
 
         <div className={styles.row}>
 
@@ -37,7 +47,7 @@ export default function Login() {
         </div>
 
         <div>
-          <button>Login</button>
+          <Button type="primary">Login</Button>
         </div>
 
       </form>

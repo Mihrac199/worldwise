@@ -11,7 +11,6 @@ const initialState = {
      error: "",
 
 }
-
 function reducer(state, action) {
 
      switch (action.type) {
