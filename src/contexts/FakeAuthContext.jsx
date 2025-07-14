@@ -37,12 +37,12 @@ export function AuthProvider({ children }) {
 
      const [{ user, isAuthenticated }, dispatch] = useReducer(reducer, initialState);
 
-     function login({ email, password }) {
+     function login(email, password) {
           if (email === FAKE_USER.email && password === FAKE_USER.password) dispatch({ type: "login", payload: FAKE_USER })
      }
 
      function logout() {
-          dispatch({ dispatch: "logout" })
+          dispatch({ type: "logout" })
      }
 
      return (

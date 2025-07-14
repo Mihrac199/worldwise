@@ -5,6 +5,7 @@ import Homepage from "./pages/Homepage"
 import Product from "./pages/Product"
 import Pricing from "./pages/Pricing"
 import Login from "./pages/Login"
+import ProtectedRoute from "./pages/ProtectedRoute"
 import AppLayout from "./pages/AppLayout"
 import PageNotFound from "./pages/PageNotFound"
 import City from "./components/City"
@@ -29,7 +30,11 @@ export default function App() {
 
             <Route path="login" element={<Login />} />
 
-            <Route path="app" element={<AppLayout />} >
+            <Route path="app" element={
+              <ProtectedRoute>
+                <AppLayout />
+              </ProtectedRoute>
+            }>
 
               <Route index element={<Navigate replace to={"cities"} />} />
 
