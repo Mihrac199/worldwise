@@ -97,36 +97,34 @@ export function CitiesProvider({ children }) {
                }
           }, [])
 
-     const createCity = useCallback(
-          async function createCity(newCity) {
-               try {
-                    dispatch({ type: "loading" });
-                    const res = await fetch(`${BASE_URL}/${ROUTE_CİTİES}`, {
-                         method: "POST",
-                         body: JSON.stringify(newCity),
-                         headers: {
-                              "Content-Type": "application/json"
-                         },
-                    });
-                    const data = await res.json();
-                    dispatch({ type: "city/created", payload: data });
-               } catch {
-                    dispatch({ type: "rejected", payload: "There was an error creating city..." });
-               }
-          }, [])
+     async function createCity(newCity) {
+          try {
+               dispatch({ type: "loading" });
+               const res = await fetch(`${BASE_URL}/${ROUTE_CİTİES}`, {
+                    method: "POST",
+                    body: JSON.stringify(newCity),
+                    headers: {
+                         "Content-Type": "application/json"
+                    },
+               });
+               const data = await res.json();
+               dispatch({ type: "city/created", payload: data });
+          } catch {
+               dispatch({ type: "rejected", payload: "There was an error creating city..." });
+          }
+     }
 
-     const deleteCity = useCallback(
-          async function deleteCity(id) {
-               try {
-                    dispatch({ type: "loading" });
-                    await fetch(`${BASE_URL}/${ROUTE_CİTİES}/${id}`, {
-                         method: "DELETE",
-                    });
-                    dispatch({ type: "city/deleted", payload: id })
-               } catch {
-                    dispatch({ type: "rejected", payload: "There was an error deleting city..." });
-               }
-          }, [])
+     async function deleteCity(id) {
+          try {
+               dispatch({ type: "loading" });
+               await fetch(`${BASE_URL}/${ROUTE_CİTİES}/${id}`, {
+                    method: "DELETE",
+               });
+               dispatch({ type: "city/deleted", payload: id })
+          } catch {
+               dispatch({ type: "rejected", payload: "There was an error deleting city..." });
+          }
+     }
 
      return (
 
